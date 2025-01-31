@@ -10,6 +10,9 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
+  boot.initrd.postMountCommands = ''
+    umount /boot && mount -o remount,fmask=0022,dmask=0022 /boot
+  '';
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
@@ -21,7 +24,7 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/628B-55B5";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      #options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
