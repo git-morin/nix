@@ -1,7 +1,7 @@
 <div align='center'>
 <img src="https://nixos.org/logo/nixos-logo-only-hires.png" height="60" />
 
-📂 This is my current NixOS configuration.
+📂 NixOS configuration.
 </div>
 
 ```
@@ -24,5 +24,5 @@
 │       ├── 🏡 default.nix  # System configuration.
 │       └── 🖥️ hardware-configuration.nix  # Hardware settings.
 ├── 📚 lib/  # Library of helper Nix functions.
-└── 📜 README.md  # Documentation for the configuration.
+└── 📜 README.md  # You are here.
 ```

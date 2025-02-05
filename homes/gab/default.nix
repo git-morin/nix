@@ -28,6 +28,5 @@
         (builtins.attrNames (builtins.readDir configsPath));
     in
       map (x: configsPath + "/${x}") configFiles;
-
   programs.home-manager.enable = true;
 }

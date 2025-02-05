@@ -1,9 +1,11 @@
 {
-  description = "Gab's Nix Poutine";
+  description = "Gab's PoutiNix";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -14,7 +16,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = 
@@ -23,6 +33,7 @@
     home-manager, 
     vscode-server,
     flake-parts,
+    nixvim,
     ...
   }@inputs:
   flake-parts.lib.mkFlake { inherit inputs; } {
