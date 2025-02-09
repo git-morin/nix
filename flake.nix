@@ -5,7 +5,7 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -27,16 +27,15 @@
     };
   };
 
-  outputs = 
-  { 
-    nixpkgs, 
-    home-manager, 
-    vscode-server,
+  outputs = {
+    nixpkgs,
     flake-parts,
+    home-manager,
+    vscode-server,
     nixvim,
     ...
   }@inputs:
-  flake-parts.lib.mkFlake { inherit inputs; } {
+    flake-parts.lib.mkFlake { inherit inputs; } {
     systems = nixpkgs.lib.systems.flakeExposed;
     imports = [ ./flakes ];
   };

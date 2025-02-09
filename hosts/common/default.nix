@@ -1,4 +1,3 @@
-{ pkgs, ...}:
 let
   lib = import ../../lib;
 in

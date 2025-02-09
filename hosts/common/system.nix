@@ -7,5 +7,4 @@
     nh
   ];
   environment.sessionVariables.FLAKE = "/etc/nixos";
-  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = 1;
 }

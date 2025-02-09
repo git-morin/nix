@@ -1,12 +1,11 @@
 { inputs, ... }:
 let
-  # Function to create multiple hosts
-  mkNixOSHosts = 
-    system: 
-    hostUsers:
-      builtins.mapAttrs (hostname: userList:
+  nixosConfigurations = system:
+    builtins.mapAttrs
+      (hostname: userList:
         inputs.nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           modules = [
             ../hosts/${hostname}
             inputs.home-manager.nixosModules.home-manager
@@ -21,17 +20,11 @@ let
                 }) userList);
               };
             }
-            inputs.vscode-server.nixosModules.default  
-            {
-              services.vscode-server.enable = true;
-            }
           ];
         }
-      ) hostUsers;
-in
-{
-  flake.nixosConfigurations = mkNixOSHosts "x86_64-linux" {
+      );
+in {
+  flake.nixosConfigurations = nixosConfigurations "x86_64-linux" {
     main = [ "gab" ];
-    # server = [ "gab" "bees" ];
   };
 }
