@@ -1,5 +1,6 @@
+{ pkgs, ... }:
 {
-  #home.packages = with pkgs; [
-    #rustdesk-flutter
-  #];
+  home.packages = with pkgs; [
+    rustdesk-flutter
+  ];
 }
