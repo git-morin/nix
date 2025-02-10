@@ -1,4 +1,4 @@
-{ inputs, system }:
+{ inputs, system, userList }:
 { config, pkgs, ... }: {
   home-manager = {
     useGlobalPkgs = true;
@@ -7,6 +7,6 @@
     users = builtins.listToAttrs (map (name: {
       inherit name;
       value = import ../homes/${name} { inherit inputs system; };
-    }) config.users);
+    }) userList);
   };
 }

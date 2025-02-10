@@ -9,8 +9,7 @@ let
           modules = [
             ../hosts/${hostname}
             inputs.home-manager.nixosModules.home-manager
-            (import ./home-manager.nix { inherit inputs system; })
-            { users = userList; }
+            (import ./home-manager.nix { inherit inputs system userList; })
           ];
         }
       );

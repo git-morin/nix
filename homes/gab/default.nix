@@ -5,16 +5,23 @@
     stateVersion = "24.11";
     packages =
       let
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config = { allowUnfree = true; };
+        };
         packageFiles = builtins.filter
           (n: n != "default.nix" && builtins.match ".*\\.nix$" n != null)
           (builtins.attrNames (builtins.readDir ./packages));
-        pkgs = import inputs.nixpkgs { inherit system; config = { allowUnfree = true; }; };
-        getPackage = pkg:
-          if builtins.hasAttr pkg pkgs then pkgs.${pkg} else null;
-        packageNames = map (n: builtins.replaceStrings [".nix"] [""] n) packageFiles;
-        validPackages = builtins.filter (p: p != null) (map getPackage packageNames);
+        importPackage = file: import (./packages + "/${file}") {
+          inherit pkgs inputs;
+        };
+        packageSets = map importPackage packageFiles;
+        extractPackages = set:
+          if builtins.hasAttr "home" set && builtins.hasAttr "packages" set.home
+          then set.home.packages
+          else [];
       in
-        validPackages;
+        builtins.concatLists (map extractPackages packageSets);
   };
 
   imports =
