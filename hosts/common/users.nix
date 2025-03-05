@@ -17,12 +17,6 @@
           "nixconfig"
         ];
         hashedPassword = "$y$j9T$nOeSRX0gqLApcicsYKr1.1$IDtjO2PT/iVRMvUmT4LtnmYHPFf9ZkHUEr60OIDuNd0";
-        # packages = with pkgs; [
-        #   kdePackages.kate
-        #   git
-        #   rustdesk
-        #   vscodium
-        # ];
       };
     };
     groups = {

@@ -8,8 +8,8 @@ let
           specialArgs = { inherit inputs; };
           modules = [
             ../hosts/${hostname}
-            inputs.home-manager.nixosModules.home-manager
-            (import ./home-manager.nix { inherit inputs system userList; })
+            inputs.home-manager.nixosModules.home-manager (import ./home-manager.nix { inherit inputs system userList; })
+            inputs.vscode-server.nixosModules.default ( import ./vscode-server.nix )
           ];
         }
       );

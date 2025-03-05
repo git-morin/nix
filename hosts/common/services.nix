@@ -1,5 +1,7 @@
 {
   services = {
+    openssh.enable = true;
+
     xserver = {
       enable = true;
       xkb = {
@@ -7,10 +9,11 @@
         variant = "";
       };
     };
-    
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
-    printing.enable = true;
+
+    printing.enable = false;
+
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
@@ -20,8 +23,6 @@
       };
       pulse.enable = true;
     };
-  };
 
-  programs.firefox.enable = true;
-  security.rtkit.enable = true;
+  };
 }
