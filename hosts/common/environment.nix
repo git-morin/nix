@@ -6,6 +6,6 @@
       nil
       nh
     ];
-    sessionVariables.FLAKE = "/etc/nixos";
+    sessionVariables.NH_FLAKE = "/etc/nixos";
   };
 }
