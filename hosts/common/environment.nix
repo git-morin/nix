@@ -5,6 +5,7 @@
       os-prober
       nil
       nh
+      nushell
     ];
     sessionVariables.NH_FLAKE = "/etc/nixos";
   };
