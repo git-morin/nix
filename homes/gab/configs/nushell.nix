@@ -29,9 +29,11 @@
            )
         '';
         shellAliases = {
-            switch = "nh os switch #main";
-            test   = "nh os test #main";
-            clean  = "nh clean all";
+            switch   = "nh os switch #main";  # evaluate -> build -> switch to new generation
+            test     = "nh os test #main";  # evaluate -> test
+            clean    = "nh clean all";  # clean up old generations
+            upgrade  = "sudo nix-env --upgrade";  # upgrade packages
+            optimize = "sudo nix-store --optimize"; # optimize nix-store
         };
     };
 

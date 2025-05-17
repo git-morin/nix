@@ -25,6 +25,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    minegrub-theme = {
+      url = "github:Lxtharia/minegrub-theme";
+    };
   };
 
   outputs = {
@@ -33,6 +37,7 @@
     home-manager,
     vscode-server,
     nixvim,
+    minegrub-theme,
     ...
   }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
