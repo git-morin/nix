@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   users = {
     mutableUsers = false;
     users = {
@@ -11,7 +11,7 @@
         description = "gab";
         uid = 1000;
         group = "gab";
-        shell = nushell;
+        shell = pkgs.nushell;
         extraGroups = [
           "wheel"
           "networkmanager"
